@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should be valid" do
-    assert @user.valid? # @user.valid? should return true to pass the test
+    assert @user.valid? # @user.valid? should return true to pass the test, notice this test later on fails due to password validations, the user in question was not assigned a password
   end
 
   test "name should be present" do

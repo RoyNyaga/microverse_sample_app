@@ -66,6 +66,9 @@ gem "bootstrap-sass", ">= 3.4.1"
 gem 'rails-controller-testing' # Enables us to use assert_template during testin
 gem 'bcrypt', '~> 3.1', '>= 3.1.13' # Perfomrs hashing of password
 
+gem 'jquery-rails'
+
+
 
 
 

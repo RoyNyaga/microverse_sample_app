@@ -10,7 +10,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password:              "foo",
                                          password_confirmation: "bar" } }
     end
-    assert_template 'users/new'
+    assert_template 'users/new' # checks if the get signup_path displays the users/new page
     assert_select "div#error_explanation" #test for the presence of a div with id=erro_explanation on users/new html page
     assert_select 'div.alert' #test for the presece of a div with class alert on users/new html page
   end
@@ -25,5 +25,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'users/show'
+    assert is_logged_in? # function defined in the test_helper.rb file in test folder
   end
 end
