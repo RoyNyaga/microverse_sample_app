@@ -27,8 +27,4 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert is_logged_in? # function defined in the test_helper.rb file in test folder
   end
-
-
-
-  # nothing realy important just testing fgit flow
 end
