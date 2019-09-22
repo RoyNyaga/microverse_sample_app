@@ -11,6 +11,11 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token # remember_token here is the attr_accessor defined the user model
   end 
 
+  # Returns true if the given user is the current user.
+  def current_user?(user)
+    user == current_user
+  end
+
   # Returns the current logged-in user (if any) else returns nill
   def current_user
     if (user_id = session[:user_id]) # If you were to read it in words, you wouldn’t say “If user id equals session of user id…”, but rather something like “If session of user id exists (while setting user id to session of user id)
@@ -40,6 +45,17 @@ module SessionsHelper
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  # Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default) # This evaluates to session[:forwarding_url] unless it’s nil,
+    session.delete(:forwarding_url)
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 
   
